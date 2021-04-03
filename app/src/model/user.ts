@@ -1,53 +1,97 @@
 export class User {
-    private name: string;
-    private firstname: string;
-    private email: string;
-    private created_at?: number;
-    private updated_at?: number;
+  private days = ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"];
 
-    constructor(name: string, firstname: string, email: string) {
-        this.name = name;
-        this.firstname = firstname;
-        this.email = email;
-    }
+  private months = [
+    "Jan",
+    "Fev",
+    "Mar",
+    "Avr",
+    "Mai",
+    "Juin",
+    "Juil",
+    "Aout",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  private name: string;
+  private firstname: string;
+  private email: string;
+  private created_at?: number;
+  private updated_at?: number;
 
-    getName() {
-        return this.name;
-    }
+  constructor(
+    name: string,
+    firstname: string,
+    email: string,
+    created_at: number = 0,
+    updated_at: number = 0
+  ) {
+    this.name = name;
+    this.firstname = firstname;
+    this.email = email;
+    this.created_at = created_at;
+    this.updated_at = updated_at;
+  }
 
-    getFirstname() {
-        return this.firstname;
-    }
+  getName() {
+    return this.name;
+  }
 
-    getEmail() {
-        return this.email;
-    }
+  getFirstname() {
+    return this.firstname;
+  }
 
-    getCreatedAt() {
-        return this.created_at;
-    }
+  getEmail() {
+    return this.email;
+  }
 
-    getUpdateAt() {
-        return this.updated_at;
-    }
+  getCreatedAt() {
+    return this.created_at;
+  }
 
-    setName(val: string) {
-        this.name = val;
+  getCreatedAtString() {
+    if (this.created_at && this.created_at !== 0) {
+      let date = new Date(this.created_at);
+      return `${this.days[date.getDay()]} ${date.getDate()} ${
+        this.months[date.getMonth()]
+      } ${date.getFullYear()}`;
     }
+    return "Not Assign";
+  }
 
-    setFirstname(val: string) {
-        this.firstname = val;
-    }
+  getUpdateAt() {
+    return this.updated_at;
+  }
 
-    setEmail(val: string) {
-        this.email = val;
+  getUpdateAtString() {
+    if (this.updated_at && this.updated_at !== 0) {
+      let date = new Date(this.updated_at);
+      return `${this.days[date.getDay()]} ${date.getDate()} ${
+        this.months[date.getMonth()]
+      } ${date.getFullYear()}`;
     }
+    return "Not Assign";
+  }
 
-    setCreatedAt(val: number) {
-        this.created_at = val;
-    }
+  setName(val: string) {
+    this.name = val;
+  }
 
-    setUpdateAt(val: number) {
-        this.updated_at = val;
-    }
+  setFirstname(val: string) {
+    this.firstname = val;
+  }
+
+  setEmail(val: string) {
+    this.email = val;
+  }
+
+  setCreatedAt(val: number) {
+    this.created_at = val;
+  }
+
+  setUpdateAt(val: number) {
+    this.updated_at = val;
+  }
 }

@@ -1,24 +1,19 @@
-import { User } from 'src/model/user';
-import { UserItem } from 'src/components/userItem/UserItem.Component';
-type Props = {
-    users: User[];
+type UserListProps = {
+  children: any;
 };
 
-export const UserList = (props: Props) => (
-    <table>
-        <thead>
-            <tr>
-                <th>nom</th>
-                <th>prénom</th>
-                <th>email</th>
-                <th colSpan={2}>action</th>
-            </tr>
-        </thead>
-        <tbody>
-            {JSON.stringify(props.users)}
-            {props.users.map((user: User, i: number) => (
-                <UserItem user={user} key={i} />
-            ))}
-        </tbody>
-    </table>
+export const UserList = (props: UserListProps) => (
+  <table>
+    <thead>
+      <tr>
+        <th>nom</th>
+        <th>prénom</th>
+        <th>email</th>
+        <th>Date de création</th>
+        <th>Date de mis à jour</th>
+        <th colSpan={2}>action</th>
+      </tr>
+    </thead>
+    <tbody>{props.children}</tbody>
+  </table>
 );
