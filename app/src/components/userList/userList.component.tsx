@@ -15,8 +15,9 @@ export const UserList = (props: Props) => (
             </tr>
         </thead>
         <tbody>
-            {props.users.map((user: User) => (
-                <UserItem user={user} />
+            {JSON.stringify(props.users)}
+            {props.users.map((user: User, i: number) => (
+                <UserItem user={user} key={i} />
             ))}
         </tbody>
     </table>
